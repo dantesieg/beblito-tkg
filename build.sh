@@ -23,12 +23,10 @@ KERNEL_SUFFIX=""
 
 find /tmp/akmods-rpms/
 
-sed -i '/^PRETTY_NAME/s/Kinoite/Beblito/' /usr/lib/os-release
+sed -i '/^PRETTY_NAME/s/Kinoite/Beblito-TKG/' /usr/lib/os-release
 
 rpm-ostree install dnf5
 dnf5 upgrade -y
-
-# wget https://download.copr.fedorainfracloud.org/results/phantomx/chinforpms/fedora-40-x86_64/07223239-protontricks/protontricks-1.11.1-1.fc40.noarch.rpm
 
 rpm-ostree install \
     libva-nvidia-driver \
@@ -45,7 +43,7 @@ rpm-ostree install \
 
 
 QUALIFIED_KERNEL="$(rpm -qa | grep -P 'kernel-(|'"$KERNEL_SUFFIX"'-)(\d+\.\d+\.\d+)' | sed -E 's/kernel-(|'"$KERNEL_SUFFIX"'-)//')"
-/usr/libexec/rpm-ostree/wrapped/dracut --no-hostonly --kver "$QUALIFIED_KERNEL" --reproducible -v --add ostree -f "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
+/usr/libexec/rpm-ostree/wrapped/dracut --strip --aggressive-strip --no-hostonly --kver "$QUALIFIED_KERNEL" --reproducible -v --add ostree -f "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
 chmod 0600 "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
 
 #rpm-ostree install \
