@@ -52,7 +52,7 @@ COPY system_files /
 
 RUN curl -Lo /usr/bin/copr https://raw.githubusercontent.com/ublue-os/COPR-command/main/copr && \
     chmod +x /usr/bin/copr && \
-    RUN curl -Lo /etc/yum.repos.d/whitehara-kernel-tkg-zen2-preempt-fedora-40.repo https://copr.fedorainfracloud.org/coprs/whitehara/kernel-tkg-zen2-preempt/repo/fedora-40/whitehara-kernel-tkg-zen2-preempt-fedora-40.repo && \
+    curl -Lo /etc/yum.repos.d/whitehara-kernel-tkg-zen2-preempt-fedora-40.repo https://copr.fedorainfracloud.org/coprs/whitehara/kernel-tkg-zen2-preempt/repo/fedora-40/whitehara-kernel-tkg-zen2-preempt-fedora-40.repo && \
     curl -Lo /etc/yum.repos.d/tigro-better_fonts-fedora-40.repo https://copr.fedorainfracloud.org/coprs/tigro/better_fonts/repo/fedora-40/tigro-better_fonts-fedora-40.repo && \
     curl -L https://negativo17.org/repos/fedora-nvidia.repo -o /etc/yum.repos.d/fedora-nvidia.repo && \
     # curl -Lo /etc/yum.repos.d/whitehara-kernel-tkg-fedora-40.repo https://copr.fedorainfracloud.org/coprs/whitehara/kernel-tkg/repo/fedora-40/whitehara-kernel-tkg-fedora-40.repo && \
