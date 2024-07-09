@@ -26,7 +26,6 @@ rpm-ostree install dnf5
 dnf5 upgrade -y
 
 # wget https://download.copr.fedorainfracloud.org/results/phantomx/chinforpms/fedora-40-x86_64/07223239-protontricks/protontricks-1.11.1-1.fc40.noarch.rpm
-# /tmp/akmods-rpms/kmod-nvidia-*.rpm
 
 rpm-ostree install \
     libva-nvidia-driver \
@@ -39,7 +38,7 @@ rpm-ostree install \
     nvidia-modprobe \
     nvidia-persistenced \
     nvidia-settings \
-    protontricks-*.rpm
+    /tmp/akmods-rpms/kmod-nvidia-*.rpm
 
 #rpm-ostree install \
 #    akmods \
