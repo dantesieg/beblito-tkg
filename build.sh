@@ -23,7 +23,7 @@ KERNEL_SUFFIX=""
 
 find /tmp/akmods-rpms/
 
-sed -i '/^PRETTY_NAME/s/Kinoite/Beblito-TKG/' /usr/lib/os-release
+sed -i '/^PRETTY_NAME/s/Kinoite/beblito-tkg/' /usr/lib/os-release
 
 rpm-ostree install dnf5 binutils lz4
 dnf5 upgrade -y
