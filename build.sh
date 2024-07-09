@@ -25,7 +25,7 @@ find /tmp/akmods-rpms/
 
 sed -i '/^PRETTY_NAME/s/Kinoite/Beblito-TKG/' /usr/lib/os-release
 
-rpm-ostree install dnf5
+rpm-ostree install dnf5 binutils
 dnf5 upgrade -y
 
 rpm-ostree install \
