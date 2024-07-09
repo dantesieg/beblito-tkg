@@ -4,6 +4,7 @@ set -ouex pipefail
 
 RELEASE="$(rpm -E %fedora)"
 KERNEL="$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
+KERNEL_SUFFIX=""
 
 ### Install packages
 
@@ -22,6 +23,8 @@ KERNEL="$(rpm -q kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
 
 find /tmp/akmods-rpms/
 
+sed -i '/^PRETTY_NAME/s/Kinoite/Beblito/' /usr/lib/os-release
+
 rpm-ostree install dnf5
 dnf5 upgrade -y
 
@@ -39,6 +42,11 @@ rpm-ostree install \
     nvidia-persistenced \
     nvidia-settings \
     /tmp/akmods-rpms/kmod-nvidia-*.rpm
+
+
+QUALIFIED_KERNEL="$(rpm -qa | grep -P 'kernel-(|'"$KERNEL_SUFFIX"'-)(\d+\.\d+\.\d+)' | sed -E 's/kernel-(|'"$KERNEL_SUFFIX"'-)//')"
+/usr/libexec/rpm-ostree/wrapped/dracut --no-hostonly --kver "$QUALIFIED_KERNEL" --reproducible -v --add ostree -f "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
+chmod 0600 "/lib/modules/$QUALIFIED_KERNEL/initramfs.img"
 
 #rpm-ostree install \
 #    akmods \
