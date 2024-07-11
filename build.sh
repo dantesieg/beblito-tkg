@@ -17,8 +17,6 @@ sed -i '/^PRETTY_NAME/s/Kinoite/beblito-tkg/' /usr/lib/os-release
 rpm-ostree install dnf5 binutils lz4
 dnf5 upgrade -y
 
-wget https://release.gitkraken.com/linux/gitkraken-amd64.rpm
-
 # Install Nvidia drivers and related packages
 rpm-ostree install \
     libva-nvidia-driver \
@@ -31,7 +29,6 @@ rpm-ostree install \
     nvidia-modprobe \
     nvidia-persistenced \
     nvidia-settings \
-    gitkraken-amd64.rpm \
     /tmp/akmods-rpms/kmod-nvidia-*.rpm
 
 # Extract and format the qualified kernel version
