@@ -25,7 +25,7 @@ rpm-ostree install \
     nvidia-driver-cuda \
     nvidia-driver-cuda-libs.i686 \
     nvidia-driver-libs.i686 \
-    nvidia-driver-NvFBCOpenGL \
+    #nvidia-driver-NvFBCOpenGL \
     nvidia-modprobe \
     nvidia-persistenced \
     nvidia-settings \
