@@ -25,11 +25,11 @@ rpm-ostree install \
     nvidia-driver-cuda \
     nvidia-driver-cuda-libs.i686 \
     nvidia-driver-libs.i686 \
-    #nvidia-driver-NvFBCOpenGL \
     nvidia-modprobe \
     nvidia-persistenced \
     nvidia-settings \
     /tmp/akmods-rpms/kmod-nvidia-*.rpm
+    #nvidia-driver-NvFBCOpenGL \
 
 # Extract and format the qualified kernel version
 QUALIFIED_KERNEL="$(rpm -qa | grep -P 'kernel-(\d+\.\d+\.\d+)' | sed -E 's/kernel-//')"
