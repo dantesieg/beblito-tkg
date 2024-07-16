@@ -46,6 +46,9 @@ RUN rpm-ostree override remove \
         dnf-data \
         libdnf5 \
         libdnf5-cli \
+        kde-connect \
+        kde-connect-libs \
+        kdeconnectd \
         sdbus-cpp && \
     ostree container commit
 
